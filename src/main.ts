@@ -5,7 +5,7 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import log, { logColor } from "./functions/writeLog.js";
 import { sessions } from "./globalVariables.js";
-import socketConnection from "./scripts/SocketConnection.js";
+import socketConnection from "./scripts/socketConnection.js";
 import cors from "cors";
 
 const app = express();
