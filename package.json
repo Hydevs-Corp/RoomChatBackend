@@ -1,0 +1,27 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/main.ts",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --exec npm run build",
+    "push": "git add * && git commit -m 'maj' && git push",
+    "build": "tsc && node ./dist/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk-animation": "^2.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "figlet": "^1.5.2",
+    "pocketbase": "^0.8.2",
+    "socket.io": "^4.5.4",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.10",
+    "typescript": "^4.9.3"
+  }
+}
