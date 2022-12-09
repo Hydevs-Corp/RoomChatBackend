@@ -5,9 +5,11 @@
   "main": "./src/main.ts",
   "type": "module",
   "scripts": {
-    "start": "nodemon --exec npm run build",
+    "start": "nodemon --exec npm run b",
     "push": "git add * && git commit -m 'maj' && git push",
-    "build": "tsc && node ./dist/main.js"
+    "build": "tsc",
+    "b": "tsc && node ./dist/main.js"
+
   },
   "author": "",
   "license": "ISC",
