@@ -3,7 +3,6 @@ import { sessions } from "../globalVariables.js";
 import { io } from "../main.js";
 
 export default function deleteMessage(id: string, sessionId: string) {
-    console.log("session id delete", sessionId)
     if (!sessionId) return;
     sessions[sessionId].messages = sessions[sessionId].messages.filter((el) => {
         if (el.id === id) {

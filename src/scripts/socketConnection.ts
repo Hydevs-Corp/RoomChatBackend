@@ -21,7 +21,6 @@ const socketConnection = (socket: Socket<any>) => {
 
     socket.on("sendMessage", ({ value, name, uid, sessionId }: sendMessageArgs) => {
         sendMessage({ value, name, uid, sessionId, sid: socket.id });
-        console.log(socketIdCorress);
     });
 
     socket.on(
@@ -30,7 +29,6 @@ const socketConnection = (socket: Socket<any>) => {
             if (!isNameTaken(sessionData.name)) {
                 let newId = getUniqueId();
                 sessions[newId] = sessionData;
-                console.log(sessions);
                 joinARoom({ roomId: newId, userData }, callback);
             } else {
                 callback({ message: "802 - This name is already taken", valid: false, data: undefined });
@@ -48,7 +46,6 @@ const socketConnection = (socket: Socket<any>) => {
     });
 
     const joinARoom = ({ roomId, userData }: IWannaThisRoom, callback: Function) => {
-        console.log('USERDATA', userData)
         if (Object.keys(sessions).includes(roomId)) {
             socket.join(roomId);
             // ajouter à sessions users
@@ -87,14 +84,11 @@ const socketConnection = (socket: Socket<any>) => {
     socket.on("disconnect", (reason) => {
         log(`Someone has disconnected`);
         for (let session of Object.keys(sessions)) {
-            console.log("start", sessions?.[session]?.users, socket.id);
             const result = sessions?.[session]?.users?.filter((el, id) => {
-                console.log('mid', el, socket.id, session, socket.id !== session)
                 if (el.uid !== socketIdCorress[socket.id]) return true;
                 if (socket.id !== el.sid) return true;
                 return false;
             });
-            console.log("end", result, socket.id);
             sessions[session].users = result;
         }
     });
