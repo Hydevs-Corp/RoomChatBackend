@@ -11,5 +11,5 @@ export default function deleteMessage(id: string, sessionId: string) {
         }
         return true;
     });
-    io.emit("message", sessions[sessionId].messages);
+    io.emit("message", sessions[sessionId]);
 }
